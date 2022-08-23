@@ -61,3 +61,14 @@ body{
 #glasses{
     transition: all 0.5s;
 }
+
+#price{
+    display: inline-block;
+    background-color: red;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#stocking{
+    color: green;
+}

@@ -15,7 +15,7 @@ window.renderItem = (arrItem) => {
     for (let item of arrItem) {
         html += `
             <div class="col-4">
-                <button style="padding: 0; border: none;" id=${item.id}>
+                <button style="padding: 0; border: none;" id=${item.id} onclick="thuKinh('${item.id}')">
                     <img src=${item.src} width="100%" height="100%" >
                 </button>
             </div>
@@ -25,6 +25,61 @@ window.renderItem = (arrItem) => {
 }
 
 renderItem(dataGlasses);
+
+let glassId = '';
+window.thuKinh = (idClick) => {
+    let glassClick = dataGlasses.find((item) => item.id === idClick);
+    glassId = idClick;
+    // console.log(glassClick);
+    let html = `
+        <img src=${glassClick.virtualImg} alt="">
+    `;
+
+    let htmlGlass = `
+        <div id="glasses">
+            <h5>${glassClick.name} - ${glassClick.brand} (${glassClick.color})</h5>
+            <span id="price">$${glassClick.price}</span>
+            <span id="stocking">Stocking</span>
+            <p id="description">${glassClick.description}</p>
+        </div>
+    `;
+
+
+    document.querySelector('#avatar').innerHTML = html;
+    document.querySelector('#glassesInfo').style.display = 'block';
+    document.querySelector('#glassesInfo').innerHTML = htmlGlass;
+
+}
+
+window.removeGlasses = (status) => {
+    if (status) {
+        let glassClick = dataGlasses.find((item) => item.id === glassId);
+        // console.log(glassClick);
+        let htmlGlass = `
+        <div id="glasses">
+            <h5>${glassClick.name} - ${glassClick.brand} (${glassClick.color})</h5>
+            <span id="price">$${glassClick.price}</span>
+            <span id="stocking">Stocking</span>
+            <p id="description">${glassClick.description}</p>
+        </div>
+    `;
+
+
+        document.querySelector('#glassesInfo').style.display = 'block';
+        document.querySelector('#glassesInfo').innerHTML = htmlGlass;
+
+        let html = `
+            <img src=${glassClick.virtualImg} alt="">
+        `;
+        document.querySelector('#avatar').innerHTML = html;
+    } else {
+        document.querySelector('#avatar').innerHTML = '';
+        document.querySelector('#glassesInfo').style.display = 'none';
+
+    }
+}
+
+
 
 
 
