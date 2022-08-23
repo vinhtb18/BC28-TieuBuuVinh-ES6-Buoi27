@@ -10,3 +10,23 @@ let dataGlasses = [
     { id: "G9", src: "./img/g9.jpg", virtualImg: "./img/v9.png", brand: "Coarch", name: "MIDNIGHT VIXEN REMIX", color: "Blue, Black", price: 120, description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit consequatur soluta ad aut laborum amet." }
 ];
 
+window.renderItem = (arrItem) => {
+    let html = '';
+    for (let item of arrItem) {
+        html += `
+            <div class="col-4">
+                <button style="padding: 0; border: none;" id=${item.id}>
+                    <img src=${item.src} width="100%" height="100%" >
+                </button>
+            </div>
+        `
+    }
+    document.querySelector('#vglassesList').innerHTML = html;
+}
+
+renderItem(dataGlasses);
+
+
+
+
+
